@@ -1,6 +1,7 @@
 import { searchForm, galleryList, loadMoreBtn } from './refs';
 import ApiService from './apiService';
 import imageCardTpl from '../templates/image-card.hbs';
+import onLightboxOpen from './light-box';
 
 const fetchService = new ApiService();
 
@@ -17,11 +18,6 @@ function onScroll() {
 }
 
 function createMarkup(images) {
-  // if (images.length === 0) {
-  //   errorNotification('No matches found. Try again.');
-  //   return;
-  // }
-
   const imageCard = imageCardTpl(images);
   galleryList.insertAdjacentHTML('beforeend', imageCard);
 
@@ -61,3 +57,4 @@ function onSearch(e) {
 
 searchForm.addEventListener('submit', onSearch);
 loadMoreBtn.addEventListener('click', onLoadMore);
+galleryList.addEventListener('click', onLightboxOpen);
