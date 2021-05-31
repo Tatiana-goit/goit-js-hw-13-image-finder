@@ -2,6 +2,7 @@ import { searchForm, galleryList, loadMoreBtn } from './refs';
 import ApiService from './apiService';
 import imageCardTpl from '../templates/image-card.hbs';
 import onLightboxOpen from './light-box';
+import onScroll from './scroll'
 
 const fetchService = new ApiService();
 
@@ -10,12 +11,6 @@ function clearContainer() {
   loadMoreBtn.classList.add('is-hidden');
 }
 
-function onScroll() {
-  window.scrollTo({
-    behavior: 'smooth',
-    top: document.body.scrollHeight,
-  });
-}
 
 function createMarkup(images) {
   const imageCard = imageCardTpl(images);
@@ -41,6 +36,7 @@ function onLoadMore() {
   fetch();
   onScroll();
 }
+
 
 function onSearch(e) {
   e.preventDefault();
