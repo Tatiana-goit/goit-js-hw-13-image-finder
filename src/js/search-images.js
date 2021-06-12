@@ -1,8 +1,11 @@
-import { searchForm, galleryList, loadMoreBtn } from './refs';
+import { searchForm, galleryList, loadMoreBtn,searchFormButton } from './refs';
 import ApiService from './apiService';
 import imageCardTpl from '../templates/image-card.hbs';
 import onLightboxOpen from './light-box';
-import onScroll from './scroll'
+import onScroll from './scroll';
+import { previewSpinner } from './spinner';
+import { Spinner } from 'spin.js';
+
 
 const fetchService = new ApiService();
 
@@ -41,6 +44,7 @@ function onLoadMore() {
 function onSearch(e) {
   e.preventDefault();
   fetchService.query = e.target.elements.query.value;
+  
 
   if (!fetchService.query) {
     clearContainer();
@@ -49,7 +53,18 @@ function onSearch(e) {
 
   clearContainer();
   fetch();
+
+  // const spinner = new Spinner(previewSpinner);
+
+  // // Запуск спиннера
+  // spinner.spin(searchForm);
+
+
+  // // Остановка спиннера при загрузке !!!!!!
+  // e.target.onload = () => spinner.stop();
 }
+
+
 
 searchForm.addEventListener('submit', onSearch);
 loadMoreBtn.addEventListener('click', onLoadMore);
