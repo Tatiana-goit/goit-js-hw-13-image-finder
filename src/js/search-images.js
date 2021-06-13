@@ -54,14 +54,13 @@ function onSearch(e) {
   clearContainer();
   fetch();
 
-  // const spinner = new Spinner(previewSpinner);
 
-  // // Запуск спиннера
+  // Спиннер!
+  // const spinner = new Spinner(previewSpinner);
   // spinner.spin(searchForm);
 
-
   // // Остановка спиннера при загрузке !!!!!!
-  // e.target.onload = () => spinner.stop();
+ 
 }
 
 
